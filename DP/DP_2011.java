@@ -71,7 +71,7 @@ c[i]가 7~9일 때는 c[i]는 단독으로 밖에 해석할 수 없다. (27~29)
 */
 import java.util.Scanner;
 
-public class DP_2011.java {
+public class DP_2011 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
