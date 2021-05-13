@@ -28,7 +28,7 @@ board = []
 num = []
 
 for i in range(n):
-    board.append(list(map(str, str(input()))))
+    board.append(input())
 
 for i in range(n-7): # 밑으로 7개의 칸이 더 남아 있어야 한다.
     for j in range(m-7): # 옆으로 7개의 칸이 더 남아 있어야 한다.
@@ -38,3 +38,12 @@ for i in range(n-7): # 밑으로 7개의 칸이 더 남아 있어야 한다.
         num.append(numOfRepainting(chessBoard))
 
 print(min(num))
+
+"""
+상당히 복잡하게 풀었다.
+다른 답안들을 보니 8x8을 좌표로 나타났을 때, (i, j)
+i+j가 짝수면 w, 홀수면 b일 때 칠해야 하는 수
+i+j가 짝수면 b, 홀수면 w일 때 칠해야 하는 수 중에서
+최소값을 구하면 된다.
+이런 방식으로 풀면 내 코드 중 함수 numOfRepainting이 거의 필요없어져 코드가 굉장히 간단해진다.
+"""
