@@ -1,13 +1,13 @@
 n = int(input())
 
-dic = {}
+mem = []
 
 for i in range(n):
     age, name = map(str, input().split())
-    dic[name] = age
-    
-# list 타입으로 저장됨
-sorted_by_age = sorted(dic.items(), key = lambda item: item[1])    
+    age = int(age)
+    mem.append((age, name))
 
-for key, value in sorted_by_age:
-    print(value, key)
+sorted_mem = sorted(mem, key=lambda mem: mem[0])
+
+for age, name in sorted_mem:
+    print(age, name)
