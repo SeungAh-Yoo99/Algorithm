@@ -21,7 +21,7 @@ for test_case in range(1, t + 1):
                 odd = '#'
             break
         elif array[i // m][i % m] == '.':
-            if i % 2 == 0:
+            if ((i // m) + (i % m)) % 2 == 0:
                 even = '.'
                 odd = '#'
             else:
