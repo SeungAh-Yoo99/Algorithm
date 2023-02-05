@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.LinkedList;
 
 class Solution {
     public String solution(String[] participant, String[] completion) {
