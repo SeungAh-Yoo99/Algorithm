@@ -9,6 +9,7 @@ public class Main {
 	static int count = 1;
 	
 	public static void robot(int r, int c, int d) {
+		// 청소된 곳을 2로 표시
 		arr[r][c] = 2;
 		
 		// 북, 동, 남, 서
@@ -31,13 +32,13 @@ public class Main {
 			}
 		}
 		
-		// 네 방향에 모두 청소할 곳이 없을 때
-		// 후진할 수 있다면 후진
+		// 네 방향에 모두 청소할 곳이 없을 때(0이 없을 때)
+		// 후진할 수 있다면 후진(뒤가 2라면)
 		int nx = r - bx[d];
 		int ny = c - by[d];
 		if(nx >= 0 && nx < n && ny >= 0 && ny < m && arr[nx][ny] == 2)
 			robot(nx, ny, d);
-		// 벽이라면 그만
+		// 벽이라면 그만(뒤가 1이라면)
 		else
 			return;
 	}
