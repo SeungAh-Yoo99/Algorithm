@@ -1,37 +1,40 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
 
-	public static void main(String[] args) {
-	    Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) throws Exception{
+		
+	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	    StringTokenizer st;
 	    
-	    int N = sc.nextInt();
-	    int M = sc.nextInt();
-	    int total = 0;
+	    // N, K 입력
+	    st = new StringTokenizer(br.readLine());
+	    int N = Integer.parseInt(st.nextToken());
+	    int K = Integer.parseInt(st.nextToken());
 	    
-	    char[] arr =  sc.next().toCharArray();
-	    for (int i = 0; i < N; i++) {
-	        boolean chk = true;
-	        if(arr[i] == 'P') {
-	            for (int j = M; 0 < j; j--) {
-	                if(0 <= i - j  && arr[i - j] == 'H') {
-	                    total++;
-	                    arr[i - j] = '0';
-	                    chk = false;
-	                    break;
-	                }
-	            }
-	            if(chk) {
-	                for (int j = 1; j < M + 1 ; j++) {
-	                    if(i + j < N && arr[i + j] == 'H') {
-	                        total++;
-	                        arr[i + j] =  '0';
-	                        break;
-	                    }
-	                }
-	            }
-	        }
+	    // 사람과 햄버거의 위치 입력
+	    char[] arr = br.readLine().toCharArray();
+	    
+	    int result = 0;
+	    for(int i = 0; i < N; i++) {
+	    	if(arr[i] == 'P') {
+	    		// 햄버거를 먹을 수 있는 범위를 앞에서부터 보며 남아있는 햄버거를 먹는다.
+	    		int start = i - K; // 시작 위치
+	    		int end = i + K; // 끝 위치
+	    		if(start < 0) start = 0; // 범위 체크
+	    		if(end >= N) end = N - 1; // 범위 체크
+	    		for(int j = start; j <= end; j++) {
+	    			if(arr[j] == 'H') { // 햄버거가 있으면
+	    				result++;
+	    				arr[j] = '0'; // 먹고 '0'으로 바꿔줌
+	    				break;
+	    			}
+	    		}
+	    	}
 	    }
-	    System.out.println(total);
+	    
+	    System.out.println(result);
 	}
 }
