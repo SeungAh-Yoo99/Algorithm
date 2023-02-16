@@ -21,8 +21,11 @@ public class Main {
 		
 		// 도로 정보를 넣을 ArrayList
 		ArrayList<LinkedList<Integer>> list = new ArrayList<>();
+		// 최단 거리 담을 배열
+		int[] minD = new int[N + 1];
 		for (int i = 0; i < N + 1; i++) {
 			list.add(new LinkedList<>());
+			minD[i] = -1; // 최단 거리를 -1로 초기화
 		}
 		
 		// 도로 정보 입력
@@ -31,13 +34,6 @@ public class Main {
 			int s = Integer.parseInt(st.nextToken());
 			int e = Integer.parseInt(st.nextToken());
 			list.get(s).add(e);
-		}
-		
-		// 최단 거리 담을 배열
-		int[] minD = new int[N + 1];
-		// 최단 거리를 -1로 초기화
-		for (int i = 1; i <= N; i++) {
-			minD[i] = -1;
 		}
 		
 		// X에서 출발할 수 있는 도시의 정보를 q에 담기
