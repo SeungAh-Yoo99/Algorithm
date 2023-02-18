@@ -8,13 +8,13 @@ import java.util.StringTokenizer;
 
 class Node {
 	int no; // 물건의 번호
-	LinkedList<Integer> left; // no보다 더 가벼운 노드 리스트
-	LinkedList<Integer> right; // no보다 더 무거운 노드 리스트
+	ArrayList<Integer> left; // no보다 더 가벼운 노드 리스트
+	ArrayList<Integer> right; // no보다 더 무거운 노드 리스트
 	
 	Node(int no) {
 		this.no = no;
-		this.left = new LinkedList<>();
-		this.right = new LinkedList<>();
+		this.left = new ArrayList<>();
+		this.right = new ArrayList<>();
 	}
 }
 
