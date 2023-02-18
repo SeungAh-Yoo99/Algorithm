@@ -10,7 +10,7 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
 		StringBuilder sb = new StringBuilder();
-		final int MAX_VALUE = (int)10e8 + 1;
+		final int MAX_VALUE = (int)10e8;
 		
 		// 도시의 개수 n 입력
 		int n = Integer.parseInt(br.readLine());
