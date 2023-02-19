@@ -1,86 +1,67 @@
-import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-class Node {
-	int key;
-	Node parent;
-	Node leftChild;
-	Node rightChild;
-	
-	Node(int key, Node parent) {
-		this.key = key;
-		this.parent = parent;
-		this.leftChild = null;
-		this.rightChild = null;
-	}
-}
-
 public class Main {
+	
+	static ArrayList<Integer> tree;
+	static int[] result;
+	static int index;
+	
+	private static void postOrder(int start, int end) { // 후위 순회
+		
+		result[index--] = tree.get(start); // 시작 노드를 답 배열에 담아줌
+		
+		int left = -1; // 왼쪽 자식의 노드를 가리킬 인덱스
+		int right = -1; // 오른쪽 자식의 노드를 가리킬 인덱스
+		
+		// 왼쪽 자식의 인덱스 구하기
+		if(start + 1 < tree.size() && tree.get(start) > tree.get(start + 1)) { // 왼쪽 자식이 있다면
+			left = start + 1; // start의 바로 다음 값은 start 값보다 작을 것
+		}
+		
+		// 오른쪽 자식의 인덱스 구하기
+		for (int i = start; i <= end; i++) {
+			if(tree.get(start) < tree.get(i)) {// 처음으로 나온 start 값보다 큰 곳이 오른쪽 자식의 인덱스
+				right = i;
+				break;
+			}
+		}
+		
+		// 오른쪽 서브 트리를 후위 순회
+		if(right != -1) { // 오른쪽 자식이 있다면
+			postOrder(right, end);
+		}
+		
+		// 왼쪽 서브 트리를 후위 순회
+		if(left != -1) { // 왼쪽 자식이 있다면
+			// 왼쪽 서브 트리의 끝 인덱스는
+			// 오른쪽 서브 트리가 있으면 오른쪽 인덱스 - 1
+			// 오른쪽 서브 트리가 없으면 끝까지
+			postOrder(left, right != -1 ? right - 1 : end);
+		}
+	}
 
-	public static void main(String[] args) throws Exception{
-
+	public static void main(String[] args){
+		
 		Scanner sc = new Scanner(System.in);
 		StringBuilder sb = new StringBuilder();
 		
-		Node root = new Node(sc.nextInt(), null); // 루트 노드 입력
-		
+		tree = new ArrayList<>(); // 전위 순회한 트리 담을 리스트
 		while(sc.hasNext()) { // 입력이 없을 때까지 반복(입력 끝났으면 ctrl+z)
-			
-			Node p = root; // 현재 가리키고 있는 노드(맨 처음은 언제나 루트 노드를 가리킴)
-			int n = sc.nextInt();
-			
-			while(true) { // 노드를 넣어줄 위치를 찾을 때까지 반복
-				
-				if(p.key > n) { // 현재 가리키고 있는 노드의 key보다 작을 경우
-					
-					if(p.leftChild != null) // 왼쪽 노드가 이미 있다면
-						p = p.leftChild; // 왼쪽 노드를 가리켜줌
-					
-					else { // 왼쪽 노드가 비었다면
-						p.leftChild = new Node(n, p); // 왼쪽 노드에 넣어주고
-						break; // 다음 노드 입력 받으러
-					}
-				}
-				
-				else { // 현재 가리키고 있는 노드의 key보다 클 경우
-
-					if(p.rightChild != null) // 오른쪽 노드가 이미 있다면
-						p = p.rightChild; // 오른쪽 노드를 가리켜줌
-					
-					else { // 오른쪽 노드가 비었다면
-						p.rightChild = new Node(n, p); // 오른쪽 노드에 넣어주고
-						break; // 다음 노드 입력 받으러
-					}
-				}
-			}
+			tree.add(sc.nextInt());
 		}
+		
+		// 트리를 후위 순회한 결과를 담을 배열
+		result = new int[tree.size()];
+		index = tree.size() - 1;
 		
 		// 후위 순회
-		Node p = root; // 현재 가리키는 노드
-		while(true) {
-			if(p.leftChild != null) // 현재 가리키는 노드의 왼쪽 자식이 있다면
-				p = p.leftChild; // 왼쪽 자식을 가리킴
-			
-			else if(p.rightChild != null) // 현재 가리키는 노드의 오른쪽 자식이 있다면
-				p = p.rightChild; // 오른쪽 자식을 가리킴
-			
-			else { // 현재 가리키는 노드의 자식이 없다면
-				sb.append(p.key + "\n"); // 출력
-				
-				if(p.parent == null) // 루트 노드라면
-					break; // 모든 출력 완료, 반복문 탈출
-				
-				if(p.key < p.parent.key) // 자신이 부모 노드의 왼쪽 자식이면
-					p.parent.leftChild = null; // 부모 노드의 왼쪽 자식 삭제
-				else // 자신이 부모 노드의 오른쪽 자식이면
-					p.parent.rightChild = null; // 부모 노드의 오른쪽 자식 삭제
-				
-				p = p.parent; // 부모 노드를 가리켜줌
-			}
-		}
+		postOrder(0, tree.size() - 1);
 		
-		// 출력
+		// 값 출력
+		for (int n : result) {
+			sb.append(n + "\n");
+		}
 		System.out.println(sb);
 	}
-
 }
