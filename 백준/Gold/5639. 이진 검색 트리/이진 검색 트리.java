@@ -1,5 +1,6 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Main {
 	
@@ -20,7 +21,7 @@ public class Main {
 		}
 		
 		// 오른쪽 자식의 인덱스 구하기
-		for (int i = start; i <= end; i++) {
+		for (int i = start + 1; i <= end; i++) {
 			if(tree.get(start) < tree.get(i)) {// 처음으로 나온 start 값보다 큰 곳이 오른쪽 자식의 인덱스
 				right = i;
 				break;
@@ -43,12 +44,18 @@ public class Main {
 
 	public static void main(String[] args){
 		
-		Scanner sc = new Scanner(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
 		
 		tree = new ArrayList<>(); // 전위 순회한 트리 담을 리스트
-		while(sc.hasNext()) { // 입력이 없을 때까지 반복(입력 끝났으면 ctrl+z)
-			tree.add(sc.nextInt());
+		
+		while(true) { // 입력이 없을 때까지 반복(입력 끝났으면 ctrl+z)
+			try {
+				tree.add(Integer.parseInt(br.readLine()));
+			}
+			catch(Exception e) {
+				break;
+			}
 		}
 		
 		// 트리를 후위 순회한 결과를 담을 배열
