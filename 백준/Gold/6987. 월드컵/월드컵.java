@@ -15,7 +15,7 @@ public class Main {
 		if(a == 5) {
 			for (int i = 0; i < 4; i++) {
 				if(result[i] == 0) { // 아직 불가능한 결과인 테스트 케이스 중에
-					int check = 1 << 6;
+					int check = 1 << 6; // 원래 boolean 배열로 check 확인해줬는데, 메모리 부족으로 비트마스킹으로 대체
 					int j = 0, k = 0;
 					for (j = 0; j < 6; j++) { // 나올 수 있는 결과 tmp와 결과를 비교
 						for (k = 0; k < 6; k++) {
