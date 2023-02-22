@@ -307,6 +307,10 @@
 |7576. 토마토|[링크](./%EB%B0%B1%EC%A4%80/Gold/7576.%E2%80%85%ED%86%A0%EB%A7%88%ED%86%A0/README.md)|
 |7662. 이중 우선순위 큐|[링크](./%EB%B0%B1%EC%A4%80/Gold/7662.%E2%80%85%EC%9D%B4%EC%A4%91%E2%80%85%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%E2%80%85%ED%81%90/README.md)|
 |9663. N－Queen|[링크](./%EB%B0%B1%EC%A4%80/Gold/9663.%E2%80%85N%EF%BC%8DQueen/README.md)|
+### 🚀 Platinum
+| 문제번호 | 링크 |
+| ----- | ----- |
+|2957. 이진 탐색 트리|[링크](./%EB%B0%B1%EC%A4%80/Platinum/2957.%E2%80%85%EC%9D%B4%EC%A7%84%E2%80%85%ED%83%90%EC%83%89%E2%80%85%ED%8A%B8%EB%A6%AC/README.md)|
 ### 🚀 Silver
 | 문제번호 | 링크 |
 | ----- | ----- |
