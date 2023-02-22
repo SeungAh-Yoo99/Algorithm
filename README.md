@@ -87,6 +87,7 @@
 | 문제번호 | 링크 |
 | ----- | ----- |
 |4012. ［모의 SW 역량테스트］ 요리사|[링크](./SWEA/Unrated/4012.%E2%80%85%EF%BC%BB%EB%AA%A8%EC%9D%98%E2%80%85SW%E2%80%85%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8%EF%BC%BD%E2%80%85%EC%9A%94%EB%A6%AC%EC%82%AC/README.md)|
+|5644. ［모의 SW 역량테스트］ 무선 충전|[링크](./SWEA/Unrated/5644.%E2%80%85%EF%BC%BB%EB%AA%A8%EC%9D%98%E2%80%85SW%E2%80%85%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8%EF%BC%BD%E2%80%85%EB%AC%B4%EC%84%A0%E2%80%85%EC%B6%A9%EC%A0%84/README.md)|
 ## 📚 백준
 ### 🚀 Bronze
 | 문제번호 | 링크 |
