@@ -27,16 +27,6 @@ public class Solution {
 			}
 		}
 		
-//		while(!aList.isEmpty()) {
-//			System.out.println(Arrays.toString(aList.poll()));
-//		}
-//		System.out.println();
-//		while(!bList.isEmpty()) {
-//			System.out.println(Arrays.toString(bList.poll()));
-//		}
-//		System.out.println();System.out.println();
-		
-		
 		if(aList.size() == 0) { // A가 어느 배터리 영역에도 들어가 있지 않을 때
 			
 			if(bList.size() > 0) { // B는 어느 배터리 영역에 들어가 있다면
