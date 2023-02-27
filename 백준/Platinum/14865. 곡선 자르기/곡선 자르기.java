@@ -21,6 +21,7 @@ public class Main {
 			}
 		}
 		if(isCount2) count2++;
+		hm.remove(x1);
 		return x2;
 	}
 
@@ -38,7 +39,7 @@ public class Main {
 		hm = new HashMap<>();
 		// 가장 왼쪽 봉우리의 왼쪽 끝점
 		int minX1 = (int) 10e9;
-		int maxX1 = (int) - 10e9;
+		int maxX1 = (int) -10e9;
 		
 		// 꼭짓점 정보 입력 받는다.
 		int[] p1 = new int[2];
