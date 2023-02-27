@@ -1,10 +1,28 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
 public class Main {
+	
+	static HashMap<Integer, Integer> hm; // 봉우리 정보를 담은 HashMap
+	static int count1; // 다른 봉우리에 의해 포함되지 않는 봉우리 개수
+	static int count2; // 다른 봉우리를 포함하지 않는 봉우리 개수
+	
+	private static int count(int x1, int x2) {
+		boolean isCount2 = true;
+		for (int j = x1 + 1; j < x2; j++) { // 한 봉우리 사이에 다른 봉우리가 있는지 확인
+			Integer t = hm.get(j);
+			if(t != null) { // 봉우리 안에 다른 봉우리가 있다면
+				isCount2 = false; // 현재 봉우리가 다른 봉우리를 포함하므로
+				count1--;
+				j = count(j, t);
+			}
+		}
+		if(isCount2) count2++;
+		return x2;
+	}
 
 	public static void main(String[] args) throws Exception {
 
@@ -14,10 +32,13 @@ public class Main {
 		// 꼭짓점의 개수 N 입력
 		int N = Integer.parseInt(br.readLine());
 		
-		// 봉우리의 왼쪽 좌표 x값과 오른쪽 좌표 x값을 담을 리스트
-		ArrayList<int[]> list = new ArrayList<>();
 		// 봉우리의 정보를 담을 스택(밑에서 위로 올라오는 점이면 push, 위에서 밑으로 내려가는 점이면 pop)
 		Stack<Integer> stack = new Stack<>();
+		// 봉우리의 왼쪽 끝점을 담을 HashMap
+		hm = new HashMap<>();
+		// 가장 왼쪽 봉우리의 왼쪽 끝점
+		int minX1 = (int) 10e9;
+		int maxX1 = (int) - 10e9;
 		
 		// 꼭짓점 정보 입력 받는다.
 		int[] p1 = new int[2];
@@ -46,11 +67,12 @@ public class Main {
 					}
 					else {
 						int x = stack.pop();
-						int[] b = new int[2];
 						// 왼쪽 끝점을 0인덱스, 오른쪽 끝점을 1인덱스
-						b[0] = x < p1[0] ? x : p1[0];
-						b[1] = x > p1[0] ? x : p1[0];
-						list.add(b);
+						int x1 = x < p1[0] ? x : p1[0];
+						int x2 = x > p1[0] ? x : p1[0];
+						hm.put(x1, x2);
+						minX1 = Math.min(minX1, x1);
+						maxX1 = Math.max(maxX1, x1);
 					}
 				}
 			}
@@ -59,41 +81,25 @@ public class Main {
 		// 꼭짓점 정보 입력이 끝났는데, stack에 봉우리의 끝점이 남아있다면 첫번째 입력 받은 점과 마지막 입력 받은 점이 하나의 끝점임
 		if(!stack.isEmpty()) {
 			int x = stack.pop();
-			int[] b = new int[2];
 			// 왼쪽 끝점을 0인덱스, 오른쪽 끝점을 1인덱스
-			b[0] = x < tmp[0] ? x : tmp[0];
-			b[1] = x > tmp[0] ? x : tmp[0];
-			list.add(b);
+			int x1 = x < tmp[0] ? x : tmp[0];
+			int x2 = x > tmp[0] ? x : tmp[0];
+			hm.put(x1, x2);
+			minX1 = Math.min(minX1, x1);
+			maxX1 = Math.max(maxX1, x1);
 		}
 		
-		int count1 = 0; // 다른 봉우리에 의해 포함되지 않는 봉우리 개수
-		int count2 = 0; // 다른 봉우리를 포함하지 않는 봉우리 개수
-		if(list.size() == 1) { // 봉우리가 한개라면
+		count1 = hm.size();
+		count2 = 0;
+		
+		if(hm.size() == 1) { // 봉우리가 한개라면
 			count1 = 1;
 			count2 = 1;
 		}
-		else if(list.size() > 1){ // 봉우리가 한개 이상이라면
-			for (int i = 0; i < list.size(); i++) {
-				int b1_x1 = list.get(i)[0]; // 비교할 첫 번째 봉우리 정보 가져오기
-				int b1_x2 = list.get(i)[1];
-				
-				boolean isCount1 = false; // 다른 봉우리에 의해 포함된다면 true, 아니라면 false
-				boolean isCount2 = false; // 다른 봉우리를 포함한다면  true, 아니라면 false
-				
-				for (int j = 0; j < list.size(); j++) {
-					if(i != j) { // 같은 점이 아닐 때
-						int b2_x1 = list.get(j)[0]; // 비교할 두 번째 봉우리 정보 가져오기
-						int b2_x2 = list.get(j)[1];
-						
-						// 봉우리1이 봉우리2에 포함된다면
-						if(b2_x1 < b1_x1 && b1_x2 < b2_x2) isCount1 = true;
-						// 봉우리1이 봉우리2를 포함한다면
-						if(b1_x1 < b2_x1 && b2_x2 < b1_x2) isCount2 = true;
-					}
-				}
-				
-				if(!isCount1) count1++;
-				if(!isCount2) count2++;
+		else if(hm.size() > 1){ // 봉우리가 한개 이상이라면
+			for (int i = minX1; i <= maxX1; i++) {
+				Integer x2 = hm.get(i);
+				if(x2 != null) i = count(i, x2);
 			}
 		}
 		
