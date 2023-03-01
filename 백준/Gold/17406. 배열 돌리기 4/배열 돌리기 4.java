@@ -102,7 +102,12 @@ public class Main {
 		order = new int[K];
 		
 		// 가능한 배열 돌리기 순서 모두 구하여 돌리기(순열)
-		perm(0);
+		for (int i = 0; i < K; i++) {
+			done[i] = true;
+			order[0] = i;
+			perm(1);
+			done[i] = false;
+		}
 		
 		// 출력
 		System.out.println(result);
