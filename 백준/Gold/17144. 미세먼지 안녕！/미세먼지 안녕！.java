@@ -9,7 +9,8 @@ public class Main {
 	static int T;
 	static int[][] map;
 	static int airCleaner; // 공기 청정기 밑 행값
-	static int result;
+	static int total; // 총 미세먼지량
+	static int remove; // 제거한 미세먼지량
 	
 	private static void spread() { // 미세먼지 확산 메소드
 		int[][] tmpMap = new int[R][C]; // 퍼진 미세먼지 양을 담을 임시 배열
@@ -46,6 +47,7 @@ public class Main {
 	private static void airCleanerOperation() { // 공기 청정기 작동
 		// 공기 청정기 위쪽
 		int top = airCleaner - 1;
+		remove += map[top - 1][0]; // 제거한 양 더해주고
 		for (int i = top - 1; i > 0; i--) { // 왼쪽
 			map[i][0] = map[i - 1][0];
 		}
@@ -62,6 +64,7 @@ public class Main {
 		
 		// 공기청정기 아래쪽
 		int bottom = airCleaner;
+		remove += map[bottom + 1][0]; // 제거한 양 더해주고
 		for (int i = bottom + 1; i < R - 1; i++) { // 왼쪽
 			map[i][0] = map[i + 1][0];
 		}
@@ -75,14 +78,6 @@ public class Main {
 			map[bottom][i] = map[bottom][i - 1];
 		}
 		map[bottom][1] = 0; // 공기청정기에서 나온 바람 곳은 미세먼지가 없음
-	}
-	
-	private static void getCount() { // 미세먼지 양 구하는 메소드
-		for (int i = 0; i < R; i++) {
-			for (int j = 0; j < C; j++) {
-				if(map[i][j] > 0) result += map[i][j];
-			}
-		}
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -101,6 +96,7 @@ public class Main {
 			for (int j = 0; j < C; j++) {
 				map[i][j] = Integer.parseInt(st.nextToken());
 				if(map[i][j] == -1) airCleaner = i;
+				if(map[i][j] > 0) total += map[i][j];
 			}
 		}
 		
@@ -108,10 +104,9 @@ public class Main {
 			spread(); // 미세먼지 확산
 			airCleanerOperation(); // 공기청정기 작동
 		}
-		getCount(); // 남아있는 미세먼지 양 구하기
 		
 		// 출력
-		System.out.println(result);
+		System.out.println(total - remove);
 	}
 
 }
