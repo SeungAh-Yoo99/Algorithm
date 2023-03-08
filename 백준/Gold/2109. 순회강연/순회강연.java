@@ -28,7 +28,8 @@ public class Main {
 					int tmp = pay[j]; // j날에 현재 검사 중인 대학에서 제시한 값을 넣어주고
 					pay[j] = arr[i][1];
 					int k = j - 1;
-					while(k > 0) { // 1 ~ j-1일을 검사해주며 하루씩 강연을 당겼을 때 더 큰 수익을 얻을 수 있으면 당겨준다.
+					// 1 ~ j-1일을 검사해주며 k날 강연을 대신 tmp 강연을 하는 것이 더 큰 수익을 얻을 수 있으면 tmp 강연을 해준다.
+					while(k > 0) {
 						if(pay[k] < tmp){
 							int t = pay[k];
 							pay[k] = tmp;
