@@ -35,46 +35,41 @@ public class Main {
 			// 명령 수행
 			boolean flag = true; // 에러가 발생했을 경우  false;
 			boolean first = true; // false면 반대 방향
-			for (int i = 0; i < p.length;) {
+			int start = 0; // 시작 인덱스
+			int end = list.size() - 1; // 끝 인덱스
+			int length = list.size(); // 리스트 크기
+			for (int i = 0; i < p.length; i++) {
 				if(p[i] == 'R') { // R일 경우
-					int count = 0; // 뒤집는 함수가 연속으로 몇 번 나오는지 세준다
-					while(i < p.length && p[i] == 'R') {
-						count++;
-						i++;
-					}
-					// 뒤집는 연산이 연속으로 짝수만큼 나오면 연산해주지 않아도 되므로
-					// 홀수일 때만 뒤집어준다.
-					if(count % 2 == 1) {
-						first = !first;
-					}
+					first = !first;
 				}
 				else { // D일 경우
-					if(list.isEmpty()) {
+					if(length == 0) {
 						sb.append("error\n");
 						flag = false;
 						break;
 					}
 					else {
-						if(first) list.remove(0); // -> 방향일 경우
-						else list.remove(list.size() - 1); // <- 방향일 경우
+						if(first) start++; // -> 방향일 경우
+						else end--; // <- 방향일 경우
+						length--;
 					}
-					i++;
 				}
 			}
 			
-			// 에러가 아닌 경우 배열 담기
-			if(flag) {
+			if(flag) { // 에러가 아닌 경우 배열 담기
 				sb.append("[");
-				if(first) {
-					for (int i = 0; i < list.size(); i++) {
-						if(i == list.size() - 1) sb.append(list.get(i));
-						else sb.append(list.get(i) + ",");
+				if(length > 0) { // 아직 수가 남아있을 때만 출력 담기
+					if(first) { // -> 방향으로 출력
+						for (int i = start; i <= end; i++) {
+							if(i == end) sb.append(list.get(i));
+							else sb.append(list.get(i) + ",");
+						}
 					}
-				}
-				else {
-					for (int i = list.size() - 1; i >= 0; i--) {
-						if(i == 0) sb.append(list.get(i));
-						else sb.append(list.get(i) + ",");
+					else { // <- 방향으로 출력
+						for (int i = end; i >= start; i--) {
+							if(i == start) sb.append(list.get(i));
+							else sb.append(list.get(i) + ",");
+						}
 					}
 				}
 				sb.append("]\n");
