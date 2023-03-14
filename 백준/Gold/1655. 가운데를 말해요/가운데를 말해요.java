@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Collections;
+import java.util.PriorityQueue;
 
 public class Main {
 
@@ -10,29 +12,22 @@ public class Main {
 		
 		int N = Integer.parseInt(br.readLine());
 		
-		int[] negative = new int[10001]; // -1 ~ -10000이 몇 개 있는지 나타내는 배열
-		int[] positive = new int[10001]; // 0 ~ 10000이 몇 개 있는지 나타내는 배열
+		PriorityQueue<Integer> maxQueue = new PriorityQueue<>(Collections.reverseOrder());
+		PriorityQueue<Integer> minQueue = new PriorityQueue<>();
 		
-for1:		for (int i = 0; i < N; i++) {
+		for (int i = 0; i < N; i++) {
 			int tmp = Integer.parseInt(br.readLine());
-			if(tmp >= 0) positive[tmp]++;
-			else negative[-tmp]++;
+			if(maxQueue.size() == minQueue.size()) maxQueue.add(tmp);
+			else minQueue.add(tmp);
 			
-			int count = -1;
-			for (int j = 10000; j > 0; j--) { // 음수값부터
-				count += negative[j];
-				if(count >= i / 2) { // 가운데 값 찾았다면
-					sb.append(-j + "\n");
-					continue for1;
-				}
+			if(minQueue.size() > 0 && maxQueue.peek() > minQueue.peek()) {
+				int t1 = maxQueue.poll();
+				int t2 = minQueue.poll();
+				maxQueue.add(t2);
+				minQueue.add(t1);
 			}
-			for (int j = 0; j <= 10000; j++) { // 양수값 확인
-				count += positive[j];
-				if(count >= i / 2) { // 가운데 값 찾았다면
-					sb.append(j + "\n");
-					continue for1;
-				}
-			}
+			
+			sb.append(maxQueue.peek() + "\n");
 		}
 		
 		System.out.println(sb);
