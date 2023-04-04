@@ -291,6 +291,7 @@
 | ----- | ----- |
 |10026. 적록색약|[링크](./%EB%B0%B1%EC%A4%80/Gold/10026.%E2%80%85%EC%A0%81%EB%A1%9D%EC%83%89%EC%95%BD)|
 |1005. ACM Craft|[링크](./%EB%B0%B1%EC%A4%80/Gold/1005.%E2%80%85ACM%E2%80%85Craft)|
+|1007. 벡터 매칭|[링크](./%EB%B0%B1%EC%A4%80/Gold/1007.%E2%80%85%EB%B2%A1%ED%84%B0%E2%80%85%EB%A7%A4%EC%B9%AD)|
 |1011. Fly me to the Alpha Centauri|[링크](./%EB%B0%B1%EC%A4%80/Gold/1011.%E2%80%85Fly%E2%80%85me%E2%80%85to%E2%80%85the%E2%80%85Alpha%E2%80%85Centauri)|
 |10159. 저울|[링크](./%EB%B0%B1%EC%A4%80/Gold/10159.%E2%80%85%EC%A0%80%EC%9A%B8)|
 |1043. 거짓말|[링크](./%EB%B0%B1%EC%A4%80/Gold/1043.%E2%80%85%EA%B1%B0%EC%A7%93%EB%A7%90)|
