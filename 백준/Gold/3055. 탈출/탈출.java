@@ -53,10 +53,6 @@ public class Main {
 							sonic.add(new int[] {nx, ny, now[2] + 1});
 						}
 					}
-					if(!visited[nx][ny] && floodTime[nx][ny] > now[2] + 1) {
-						visited[nx][ny] = true;
-						sonic.add(new int[] {nx, ny, now[2] + 1});
-					}
 				}
 			}
 		}
