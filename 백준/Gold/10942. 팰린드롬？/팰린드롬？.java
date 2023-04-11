@@ -18,18 +18,23 @@ public class Main {
 		}
 		
 		boolean[][] dp = new boolean[N + 1][N + 1];
-		for (int i = 1; i <= N; i++) { // 수열 길이
-			for (int j = 1; j <= N - i + 1; j++) { // 시작 위치
-				// 시작 위치와 끝 위치가 다르면 확인 안해도 됨
-				if(arr[j] != arr[j + i - 1]) continue;
-				
-				dp[i][j] = true;
-				int start = j + 1;
-				int end = j + i - 2;
-				while(start <= end) {
-					if(arr[start++] != arr[end--]) {
-						dp[i][j] = false;
-						break;
+		
+		// 길이가 1인 수열은 무조건 팰린드롬
+		for (int i = 1; i <= N; i++) {
+			dp[i][i] = true;
+		}
+		
+		// 길이가 2인 수열은 두 수가 같으면 팰린드롬
+		for (int i = 1; i < N; i++) {
+			if(arr[i] == arr[i + 1]) dp[i][i + 1] = true;
+		}
+		
+		// 길이가 3 이상은 수열은 시작과 끝이 같을 때 그 안이 팰린드롬이면 팰린드롬
+		for (int i = 2; i < N; i++) {
+			for (int j = 1; j <= N - i; j++) {
+				if(arr[j] == arr[j + i]) { // 시작과 끝이 같을 때
+					if(dp[j + 1][j + i - 1]) { // 그 안이 팰린드롬이면
+						dp[j][j + i] = true; // 그 수열도 팰린드롬
 					}
 				}
 			}
@@ -41,10 +46,7 @@ public class Main {
 			int S = Integer.parseInt(st.nextToken());
 			int E = Integer.parseInt(st.nextToken());
 			
-			int result = 0;
-			if(dp[E - S + 1][S]) result = 1;
-
-			sb.append(result + "\n");
+			sb.append((dp[S][E] ? 1 : 0) + "\n");
 		}
 		
 		System.out.println(sb);
