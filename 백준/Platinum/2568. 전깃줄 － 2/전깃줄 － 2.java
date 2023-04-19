@@ -52,7 +52,7 @@ public class Main {
 			}
 		}
 		
-		// 애야 하는 전깃줄의 A위치 구하기 & 출력
+		// 없애야 하는 전깃줄의 A위치 구하기 & 출력
 		sb.append((N - length) + "\n");
 		int idx = length;
 		for (int i = 0; i < N; i++) {
