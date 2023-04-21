@@ -93,7 +93,7 @@ public class Main {
 		int time = 0;
 		
 		// 1000초가 넘어도 다른 상어가 남아있으면 -1 출력
-		while(count > 1 && time++ <= 1000) {
+		while(count > 1 && time++ < 1000) {
 			
 			// 상어 이동
 			sharksMove();
