@@ -2,6 +2,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -10,41 +13,40 @@ public class Main {
 	static int M;
 	static int[] arr;
 	static int[] subArr;
-	static boolean[] visited;
-	static ArrayList<int[]> result;
+	static boolean[] check;
 	
-	private static void sub(int n, int m) {
+	static List<List<Integer>> result = new ArrayList<>();
+	static Set<List<Integer>> resultSet = new HashSet<>();
+	
+	private static void sub(int m) {
 		
 		if(m == M) {
-			boolean flag = false; // result에 subArr와 같은 수열이 없다면 false
-			for (int i = 0; i < result.size(); i++) {
-					boolean f = true; // 현재 탐색 중인 배열이 subArr와 같다면 true
-					for (int j = 0; j < M; j++) {
-						if(result.get(i)[j] != subArr[j]) {
-							f = false;
-							break;
-						}
-					}
-					if(f) {
-						flag = true;
-						break;
-					}
+			List<Integer> list = listOf(subArr);
+			if(!resultSet.contains(list)) {
+				result.add(list);
+				resultSet.add(list);
 			}
-			if(!flag) {
-				result.add(subArr.clone());
-			}
-			
 			return;
 		}
 		
 		for (int i = 0; i < N; i++) {
-			if(!visited[i]) {
+			if(!check[i]) {
 				subArr[m] = arr[i];
-				visited[i] = true;
-				sub(i + 1, m + 1);
-				visited[i] = false;
+				check[i] = true;
+				sub(m + 1);
+				check[i] = false;
 			}
 		}
+	}
+	
+	private static List<Integer> listOf(int[] subArr) { // 배열을 ArrayList로 변환하는 메소드
+		List<Integer> ret = new ArrayList<>();
+		
+		for (int i : subArr) {
+			ret.add(i);
+		}
+		
+		return ret;
 	}
 
 	public static void main(String[] args) throws Exception{
@@ -65,15 +67,13 @@ public class Main {
 		Arrays.sort(arr);
 		
 		subArr = new int[M];
-		visited = new boolean[N];
+		check = new boolean[N];
 		
-		result = new ArrayList<>();
-		
-		sub(0, 0);
+		sub(0);
 		
 		for (int i = 0; i < result.size(); i++) {
 			for (int j = 0; j < M; j++) {
-				sb.append(result.get(i)[j] + " ");
+				sb.append(result.get(i).get(j) + " ");
 			}
 			sb.append("\n");
 		}
