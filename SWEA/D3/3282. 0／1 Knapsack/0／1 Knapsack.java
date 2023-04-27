@@ -33,12 +33,7 @@ public class Solution {
 				}
 			}
 			
-			int result = 0;
-			for (int i = 1; i <= K; i++) {
-				result = Math.max(result, dp[i]);
-			}
-			
-			sb.append("#" + tc + " " + result + "\n");
+			sb.append("#" + tc + " " + dp[K] + "\n");
 		}
 		System.out.println(sb);
 	}
