@@ -91,8 +91,8 @@ public class Main {
 		// 5% 이동
 		out(nx + dx[d] * 2, ny + dy[d] * 2, (int)(map[nx][ny] * 0.05));
 		rest -=(int)(map[nx][ny] * 0.05);
-		// 알파 이동
 		
+		// 알파 이동
 		out(nx + dx[d], ny + dy[d], rest);
 		
 		// 원래 자리 모래 없어짐
