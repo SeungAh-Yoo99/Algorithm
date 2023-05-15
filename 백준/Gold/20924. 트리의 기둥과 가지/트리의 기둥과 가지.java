@@ -66,11 +66,11 @@ public class Main {
 					q.add(new Node(list.get(i).node, now.cost + list.get(i).cost));
 				}
 			}
-			if(flag && count >= 2) {
+			if(flag && count >= 2) { // 기가 노드라면
 				pillar = now.cost;
 				flag = false;
 			}
-			if(flag && count < 2) { // 현재 노드도 아직 기둥이라면
+			else if(flag && count < 2) { // 현재 노드도 아직 기둥이라면
 				pillar = now.cost;
 			}
 			else if(!flag && count == 0) { // 현재 노드가 리프 노드라면
