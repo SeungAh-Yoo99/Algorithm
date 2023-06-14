@@ -25,12 +25,15 @@ public class Solution {
                 long K = (start + end) / 2;
                 long num = K * (K + 1) / 2;
 
-                if (num <= N) {
+                 if(num == N) {
                     result = K;
-                    start = K + 1;
+                    break;
+                }
+                else if(num > N) {
+                    end = K - 1;
                 }
                 else {
-                    end = K - 1;
+                    start = K + 1;
                 }
             }
 
