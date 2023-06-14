@@ -18,7 +18,7 @@ public class Solution {
 
             // 이분 탐색
             long start = 1;
-            long end = 10000000000L;
+            long end = (long)Math.sqrt(N * 2);
 
             long result = 0;
             while(start <= end) {
