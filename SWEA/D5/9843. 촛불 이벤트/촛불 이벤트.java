@@ -20,12 +20,12 @@ public class Solution {
             long start = 1;
             long end = (long)Math.sqrt(N * 2);
 
-            long result = 0;
+            long result = -1;
             while(start <= end) {
                 long K = (start + end) / 2;
                 long num = K * (K + 1) / 2;
 
-                 if(num == N) {
+                if(num == N) {
                     result = K;
                     break;
                 }
@@ -36,9 +36,6 @@ public class Solution {
                     start = K + 1;
                 }
             }
-
-            long value = result * (result + 1) / 2;
-            if(value != N) result = -1;
 
             sb.append("#" + t + " " + result + "\n");
         }
