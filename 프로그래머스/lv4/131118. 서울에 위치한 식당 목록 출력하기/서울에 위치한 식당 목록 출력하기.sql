@@ -3,6 +3,6 @@ select ri.REST_ID, REST_NAME, FOOD_TYPE, FAVORITES, ADDRESS, round(avg(review_sc
 from rest_info as ri
 right outer join rest_review as rr
 on ri.rest_id = rr.rest_id
+where address like '서울%'
 group by rr.rest_id
-having address like '서울%'
 order by score desc, favorites desc
