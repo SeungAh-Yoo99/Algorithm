@@ -9,7 +9,7 @@ public class Main {
         StringTokenizer st;
         StringBuilder result = new StringBuilder();
 
-        // N := 파티자으이 크기, M := 서비스를 요청한 손님의 수
+        // N := 파티장의 크기, M := 서비스를 요청한 손님의 수
         st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
