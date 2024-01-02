@@ -55,13 +55,9 @@ public class Main {
 
         double result = 0; // 간선을 새로 연결하는 경우, 간선 길이를 더해줌
         for (int i = 0; i < list.size(); i++) {
-            //System.out.println(Arrays.toString(list.get(i)));
             if(union((int)list.get(i)[0], (int)list.get(i)[1])) {
-                //System.out.println(Arrays.toString(parent));
                 result += list.get(i)[2];
-                //System.out.println(result);
             }
-            //System.out.println();
         }
 
         System.out.println(String.format("%.2f", result));
