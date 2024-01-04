@@ -5,42 +5,56 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-	public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception{
 
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st;
-		
-		int N = Integer.parseInt(br.readLine());
-		long[] arr = new long[N];
-		st = new StringTokenizer(br.readLine());
-		for (int i = 0; i < N; i++) {
-			arr[i] = Long.parseLong(st.nextToken());
-		}
-		Arrays.sort(arr); // 오름차순으로 정렬
-		
-		long minSum = Long.MAX_VALUE;
-		long[] result = new long[3];
-		
-		for (int i = 0; i < N - 2; i++) { // 처음 값 선택
-			int start = i + 1; // 두번째 값
-			int end = N - 1; // 세번째 값
-			
-			while(start < end) {
-				
-				// 특성값이 0에 더 가까운 용액 발견
-				if(Math.abs(arr[i] + arr[start] + arr[end]) < minSum) {
-					minSum = Math.abs(arr[i] + arr[start] + arr[end]);
-					result[0] = arr[i];
-					result[1] = arr[start];
-					result[2] = arr[end];
-				}
-				
-				if(arr[i] + arr[start] + arr[end] > 0) end--;
-				else start++;
-			}
-		}
-		
-		System.out.println(result[0] + " " + result[1] + " "+ result[2]);
-	}
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+        // N := 용액의 수
+        int N = Integer.parseInt(br.readLine());
+
+        // 용액의 특성값
+        long[] price = new long[N];
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < N; i++) {
+            price[i] = Long.parseLong(st.nextToken());
+        }
+
+        // 용액의 특성값 오름차순 정렬
+        Arrays.sort(price);
+
+        // 작은 값 부터 하나의 용액 선택 한 후, 다른 두 용액은 투 포인터로 구학
+        long result = Long.MAX_VALUE;
+        long a = 0, b = 0, c = 0;
+        long tmp; int s, e;
+        for (int i = 0; i < N; i++) {
+            s = i + 1;
+            e = N - 1;
+
+            while (s < e) {
+
+                tmp = price[i] + price[s] + price[e];
+
+                if(tmp < 0) { // 세 용액의 합이 음수일 경우
+                    if(result > tmp * -1) { // 더 작은 절대값을 찾았다면
+                        result = tmp * -1;
+                        a = price[i];
+                        b = price[s];
+                        c = price[e];
+                    }
+                    s++;
+                } else { // 세 용액의 합이 양수일 경우
+                    if(result > tmp) { // 더 작은 절대값을 찾았다면
+                        result = tmp;
+                        a = price[i];
+                        b = price[s];
+                        c = price[e];
+                    }
+                    e--;
+                }
+            }
+        }
+
+        // 출력
+        System.out.println(a + " " + b + " " + c);
+    }
 }
