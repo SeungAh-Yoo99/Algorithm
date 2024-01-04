@@ -22,9 +22,10 @@ public class Main {
         // 용액의 특성값 오름차순 정렬
         Arrays.sort(price);
 
-        // 작은 값 부터 하나의 용액 선택 한 후, 다른 두 용액은 투 포인터로 구학
-        long result = Long.MAX_VALUE;
-        long a = 0, b = 0, c = 0;
+        // 작은 값부터 하나의 용액 선택한 후, 다른 두 용액은 투 포인터로 구하기
+        long result = Long.MAX_VALUE; // 답에 해당하는 세 용액의 합의 절대값
+        long a = 0, b = 0, c = 0; // 답에 해당하는 세 용액
+        
         long tmp; int s, e;
         for (int i = 0; i < N; i++) {
             s = i + 1;
