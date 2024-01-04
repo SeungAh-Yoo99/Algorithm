@@ -37,7 +37,7 @@ public class Main {
 				if(operator[i] == '+') tmpNum[i] += tmpNum[i + 1];
 				else if(operator[i] == '-') tmpNum[i] -= tmpNum[i + 1];
 				else tmpNum[i] *= tmpNum[i + 1];
-				tmpNum[i + 1] = null; // 연산이 끝났다는 표시로 null 저장
+				tmpNum[i + 1] = null; // 연산이 끝났다는 표시로 최대값 저장
 			}
 		}
 		
