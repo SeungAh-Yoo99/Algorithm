@@ -47,7 +47,7 @@ public class Main {
                 edges.get(S).add(new int[] {E, T * -1});
             }
 
-            // 벨만포드 알고리즘을 사용하여 음수 사이클이 생겼는지 확인
+            // 벨만-포드 알고리즘을 사용하여 음수 사이클이 생겼는지 확인
             if(isPossible()) answer.append("YES\n");
             else answer.append("NO\n");
         }
@@ -55,7 +55,7 @@ public class Main {
         System.out.println(answer);
     }
 
-    private static boolean isPossible() { // 벨만포드 알고리즘을 사용하여 음수 사이클이 생겼는지 확인
+    private static boolean isPossible() { // 벨만-포드 알고리즘을 사용하여 음수 사이클이 생겼는지 확인
 
         // i부터 다른 지점에 도착하는 경우 구하기
         int[] minDis, now, next; Queue<int[]> q; ArrayList<int[]> edge;
@@ -76,7 +76,7 @@ public class Main {
                     next = edge.get(j);
 
                     if(minDis[next[0]] > now[1] + next[1]) { // 더 짧은 경로를 찾았을 때만 이동
-                        if(now[2] + 1 == N) { // 벨만포드 알고리즘에 의해서 N - 1개 이상의 간선을 지났다면 음수 사이클이 생긴 것
+                        if(now[2] + 1 == N) { // 벨만-포드 알고리즘에 의해서 N개 이상의 간선을 지났다면 음수 사이클이 생긴 것
                             return true;
                         }
                         minDis[next[0]] = now[1] + next[1];
