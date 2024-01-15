@@ -43,16 +43,16 @@ public class Main {
         }
 
         // 라인 정보
-        int[][] line = new int[N][3];
+        long[][] line = new long[N][3];
         for (int i = 1; i < N; i++) {
             st = new StringTokenizer(br.readLine());
-            line[i][0] = Integer.parseInt(st.nextToken());
-            line[i][1] = Integer.parseInt(st.nextToken());
-            line[i][2] = Integer.parseInt(st.nextToken());
+            line[i][0] = Long.parseLong(st.nextToken());
+            line[i][1] = Long.parseLong(st.nextToken());
+            line[i][2] = Long.parseLong(st.nextToken());
         }
 
         // 라인별 사용 횟수
-        int[] use = new int[N + 1];
+        long[] use = new long[N + 1];
         int sum = 0;
         for (int i = 1; i <= N; i++) {
             sum += route[i];
@@ -60,7 +60,7 @@ public class Main {
         }
 
         // 각 라인별로 티켓을 구입하는게 더 나은지 IC 카드를 구입하는게 더 나은지 계산하여 더해주기
-        int answer = 0;
+        long answer = 0;
         for (int i = 1; i < N; i++) {
             answer += Math.min(line[i][0] * use[i], line[i][1] * use[i] + line[i][2]);
         }
