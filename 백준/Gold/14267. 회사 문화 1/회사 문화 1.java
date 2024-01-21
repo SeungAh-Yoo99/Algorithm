@@ -1,8 +1,5 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -18,16 +15,13 @@ public class Main {
         int m = Integer.parseInt(st.nextToken());
 
         // 관계
-        ArrayList<ArrayList<Integer>> relationship = new ArrayList<>();
-        for (int i = 0; i <= n; i++) {
-            relationship.add(new ArrayList<>());
-        }
+        int[] relationship = new int[n + 1];
 
         st = new StringTokenizer(br.readLine());
-        int boss = Integer.parseInt(st.nextToken()); // 1번 입력은 버림.
-        for (int i = 2; i <= n; i++) {
+        int boss;
+        for (int i = 1; i <= n; i++) {
             boss = Integer.parseInt(st.nextToken());
-            relationship.get(boss).add(i);
+            relationship[i] = boss;
         }
 
         // 칭찬
@@ -42,21 +36,9 @@ public class Main {
             commend[i] += w;
         }
 
-        // 1번부터 부하들에게 칭찬 전달
-        Queue<Integer> q = new LinkedList<>();
-        q.add(1);
-
-        int now, next; ArrayList<Integer> list;
-        while (!q.isEmpty()) {
-            now = q.poll();
-
-            // now의 부하 리스트
-            list = relationship.get(now);
-            for (int j = 0; j < list.size(); j++) {
-                next = list.get(j);
-                commend[next] += commend[now];
-                q.add(next);
-            }
+        // 상사의 칭찬을 전달 받음
+        for (int j = 2; j <= n; j++) {
+            commend[j] += commend[relationship[j]];
         }
 
         // 출력
