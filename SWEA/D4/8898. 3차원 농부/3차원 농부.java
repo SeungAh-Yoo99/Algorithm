@@ -33,7 +33,7 @@ public class Solution {
             // 정렬
             Arrays.sort(cow);
 
-            // 말의 z좌표를 입력 받으며, 소의 z 좌표 중 가장 가까운 양수값을 찾는다.
+            // 말의 z좌표를 입력 받으며, 최소값이 나올 수 있는 가능성이 있는 소의 좌표를 찾는다.
             int result = Integer.MAX_VALUE, count = 0, idx;
             st = new StringTokenizer(br.readLine());
             for (int i = 0; i < M; i++) {
