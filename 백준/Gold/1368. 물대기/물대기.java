@@ -30,7 +30,7 @@ public class Main {
 
         PriorityQueue<int[]> pq = new PriorityQueue<>((o1, o2) -> o1[2] - o2[2]);
         for (int i = 1; i <= N; i++) {
-            pq.add(new int[] {0, i, Integer.parseInt(br.readLine())});
+            pq.add(new int[] {0, i, Integer.parseInt(br.readLine())}); // 새로 우물을 파는 경우를 0번의 가상 우물에 연결시켜준다고 생각.
         }
         for (int i = 1; i <= N; i++) {
             st = new StringTokenizer(br.readLine());
