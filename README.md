@@ -127,6 +127,7 @@
 |Directory|[링크](./SWEA/Unrated/Directory)|
 |Social Media|[링크](./SWEA/Unrated/Social%20Media)|
 |[Professional] 가장 짧은 길 전부 청소하기|[링크](./SWEA/Unrated/%5BProfessional%5D%20%EA%B0%80%EC%9E%A5%20%EC%A7%A7%EC%9D%80%20%EA%B8%B8%20%EC%A0%84%EB%B6%80%20%EC%B2%AD%EC%86%8C%ED%95%98%EA%B8%B0)|
+|[Professional] 간담회 참석|[링크](./SWEA/Unrated/%5BProfessional%5D%20%EA%B0%84%EB%8B%B4%ED%9A%8C%20%EC%B0%B8%EC%84%9D)|
 |[Professional] 그래도 수명이 절반이 되어서는...|[링크](./SWEA/Unrated/%5BProfessional%5D%20%EA%B7%B8%EB%9E%98%EB%8F%84%20%EC%88%98%EB%AA%85%EC%9D%B4%20%EC%A0%88%EB%B0%98%EC%9D%B4%20%EB%90%98%EC%96%B4%EC%84%9C%EB%8A%94...)|
 |기초 Partial Sort 연습|[링크](./SWEA/Unrated/%EA%B8%B0%EC%B4%88%20Partial%20Sort%20%EC%97%B0%EC%8A%B5)|
 |수열 편집|[링크](./SWEA/Unrated/%EC%88%98%EC%97%B4%20%ED%8E%B8%EC%A7%91)|
