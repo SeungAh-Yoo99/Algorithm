@@ -125,7 +125,6 @@
 |5644. ［모의 SW 역량테스트］ 무선 충전|[링크](./SWEA/Unrated/5644.%E2%80%85%EF%BC%BB%EB%AA%A8%EC%9D%98%E2%80%85SW%E2%80%85%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8%EF%BC%BD%E2%80%85%EB%AC%B4%EC%84%A0%E2%80%85%EC%B6%A9%EC%A0%84)|
 |5656. ［모의 SW 역량테스트］ 벽돌 깨기|[링크](./SWEA/Unrated/5656.%E2%80%85%EF%BC%BB%EB%AA%A8%EC%9D%98%E2%80%85SW%E2%80%85%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8%EF%BC%BD%E2%80%85%EB%B2%BD%EB%8F%8C%E2%80%85%EA%B9%A8%EA%B8%B0)|
 |9429. Directory|[링크](./SWEA/Unrated/9429.%20Directory)|
-|Social Media|[링크](./SWEA/Unrated/Social%20Media)|
 |[Professional] 가장 짧은 길 전부 청소하기|[링크](./SWEA/Unrated/%5BProfessional%5D%20%EA%B0%80%EC%9E%A5%20%EC%A7%A7%EC%9D%80%20%EA%B8%B8%20%EC%A0%84%EB%B6%80%20%EC%B2%AD%EC%86%8C%ED%95%98%EA%B8%B0)|
 |[Professional] 간담회 참석|[링크](./SWEA/Unrated/%5BProfessional%5D%20%EA%B0%84%EB%8B%B4%ED%9A%8C%20%EC%B0%B8%EC%84%9D)|
 |[Professional] 그래도 수명이 절반이 되어서는...|[링크](./SWEA/Unrated/%5BProfessional%5D%20%EA%B7%B8%EB%9E%98%EB%8F%84%20%EC%88%98%EB%AA%85%EC%9D%B4%20%EC%A0%88%EB%B0%98%EC%9D%B4%20%EB%90%98%EC%96%B4%EC%84%9C%EB%8A%94...)|
