@@ -130,7 +130,6 @@
 |5656. ［모의 SW 역량테스트］ 벽돌 깨기|[링크](./SWEA/Unrated/5656.%E2%80%85%EF%BC%BB%EB%AA%A8%EC%9D%98%E2%80%85SW%E2%80%85%EC%97%AD%EB%9F%89%ED%85%8C%EC%8A%A4%ED%8A%B8%EF%BC%BD%E2%80%85%EB%B2%BD%EB%8F%8C%E2%80%85%EA%B9%A8%EA%B8%B0)|
 |9416. Social Media|[링크](./SWEA/Unrated/9416.%20Social%20Media)|
 |9429. Directory|[링크](./SWEA/Unrated/9429.%20Directory)|
-|수열 편집|[링크](./SWEA/Unrated/%EC%88%98%EC%97%B4%20%ED%8E%B8%EC%A7%91)|
 ## 📚 백준
 ### 🚀 Bronze
 | 문제번호 | 링크 |
