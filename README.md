@@ -123,6 +123,7 @@
 |13501. 수열 편집|[링크](./SWEA/Unrated/13501.%20%EC%88%98%EC%97%B4%20%ED%8E%B8%EC%A7%91)|
 |14707.  [Pro] 단어검색|[링크](./SWEA/Unrated/14707.%20%20%5BPro%5D%20%EB%8B%A8%EC%96%B4%EA%B2%80%EC%83%89)|
 |14726. Segment Tree 연습 - 1|[링크](./SWEA/Unrated/14726.%20Segment%20Tree%20%EC%97%B0%EC%8A%B5%20-%201)|
+|14733. Segment Tree 연습 - 2|[링크](./SWEA/Unrated/14733.%20Segment%20Tree%20%EC%97%B0%EC%8A%B5%20-%202)|
 |16245.  [Pro] 물류허브|[링크](./SWEA/Unrated/16245.%20%20%5BPro%5D%20%EB%AC%BC%EB%A5%98%ED%97%88%EB%B8%8C)|
 |1767. ［SW Test 샘플문제］ 프로세서 연결하기|[링크](./SWEA/Unrated/1767.%E2%80%85%EF%BC%BBSW%E2%80%85Test%E2%80%85%EC%83%98%ED%94%8C%EB%AC%B8%EC%A0%9C%EF%BC%BD%E2%80%85%ED%94%84%EB%A1%9C%EC%84%B8%EC%84%9C%E2%80%85%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0)|
 |19203.  [Pro] 문자열 관리 프로그램|[링크](./SWEA/Unrated/19203.%20%20%5BPro%5D%20%EB%AC%B8%EC%9E%90%EC%97%B4%20%EA%B4%80%EB%A6%AC%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8)|
