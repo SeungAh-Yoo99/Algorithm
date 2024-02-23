@@ -120,6 +120,7 @@
 | 문제번호 | 링크 |
 | ----- | ----- |
 |12372. 기초 Partial Sort 연습|[링크](./SWEA/Unrated/12372.%20%EA%B8%B0%EC%B4%88%20Partial%20Sort%20%EC%97%B0%EC%8A%B5)|
+|13469. [Pro] 메모장 프로그램|[링크](./SWEA/Unrated/13469.%20%5BPro%5D%20%EB%A9%94%EB%AA%A8%EC%9E%A5%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8)|
 |13501. 수열 편집|[링크](./SWEA/Unrated/13501.%20%EC%88%98%EC%97%B4%20%ED%8E%B8%EC%A7%91)|
 |14707.  [Pro] 단어검색|[링크](./SWEA/Unrated/14707.%20%20%5BPro%5D%20%EB%8B%A8%EC%96%B4%EA%B2%80%EC%83%89)|
 |14726. Segment Tree 연습 - 1|[링크](./SWEA/Unrated/14726.%20Segment%20Tree%20%EC%97%B0%EC%8A%B5%20-%201)|
