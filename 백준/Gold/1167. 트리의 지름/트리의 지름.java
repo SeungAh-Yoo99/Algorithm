@@ -5,63 +5,65 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
-	
-	static int V;
-	static ArrayList<ArrayList<int[]>> list;
-	static boolean[] visited;
-	static long result;
-	
-	private static int maxLength(int node) {
-		
-		ArrayList<int[]> nodeList = list.get(node);
-		int size = nodeList.size();
-		
-		int[] child = new int[size + 1];
-		
-		for (int i = 0; i < size; i++) {
-			int[] next = nodeList.get(i);
-			
-			if(!visited[next[0]]) {
-				visited[next[0]] = true;
-				child[i] = maxLength(next[0]) + next[1];
-			}
-		}
-		
-		Arrays.sort(child);
-		
-		result = Math.max(result, child[size] + child[size - 1]);
-		
-		return child[size];
-	}
 
-	public static void main(String[] args) throws Exception {
+    static ArrayList<ArrayList<int[]>> edges;
+    static boolean[] visited;
+    static long result;
 
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st;
-		
-		// 입력
-		V = Integer.parseInt(br.readLine());
-		list = new ArrayList<>();
-		for (int i = 0; i <= V; i++) {
-			list.add(new ArrayList<>());
-		}
-		
-		for (int i = 0; i < V; i++) {
-			st = new StringTokenizer(br.readLine());
-			int a = Integer.parseInt(st.nextToken());
-			while(true) { // -1이 입력될 때까지 입력
-				int b = Integer.parseInt(st.nextToken());
-				if(b == -1) break;
-				int c = Integer.parseInt(st.nextToken());
-				list.get(a).add(new int[] {b, c});
-			}
-		}
-		visited = new boolean[V + 1];
-		
-		visited[1] = true;
-		maxLength(1);
-		
-		System.out.println(result);
-	}
+    public static void main(String[] args) throws Exception{
 
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+
+        int v = Integer.parseInt(br.readLine());
+
+        // 연결 노드 정보
+        edges = new ArrayList<>();
+        for (int i = 0; i <= v; i++) {
+            edges.add(new ArrayList<>());
+        }
+
+        int s, e, w;
+        for (int i = 1; i <= v; i++) {
+            st = new StringTokenizer(br.readLine());
+            s = Integer.parseInt(st.nextToken());
+            while(true) {
+                e = Integer.parseInt(st.nextToken());
+                if(e == -1) break;
+                w = Integer.parseInt(st.nextToken());
+                edges.get(s).add(new int[] {e, w});
+            }
+        }
+
+        visited = new boolean[v + 1];
+        result = 0;
+
+        maxLength(1);
+
+        System.out.println(result);
+    }
+
+    static private long maxLength(int node) {
+
+        visited[node] = true;
+
+        ArrayList<int[]> edge = edges.get(node);
+        int size = edge.size();
+        long[] weight = new long[size + 1];
+
+        int[] next;
+        for (int i = 0; i < size; i++) {
+            next = edge.get(i);
+
+            if(!visited[next[0]]) {
+                weight[i] = maxLength(next[0]) + next[1];
+            }
+        }
+
+        Arrays.sort(weight);
+
+        result = Math.max(result, weight[size] + weight[size - 1]);
+
+        return weight[size];
+    }
 }
