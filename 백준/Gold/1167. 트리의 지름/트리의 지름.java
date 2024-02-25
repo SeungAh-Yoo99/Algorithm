@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main {
+public class BOJ1167 {
 
     static ArrayList<ArrayList<int[]>> edges;
     static boolean[] visited;
@@ -23,6 +23,7 @@ public class Main {
             edges.add(new ArrayList<>());
         }
 
+        // 간선 정보 입력
         int s, e, w;
         for (int i = 1; i <= v; i++) {
             st = new StringTokenizer(br.readLine());
@@ -38,6 +39,7 @@ public class Main {
         visited = new boolean[v + 1];
         result = 0;
 
+        // 1번 노드부터 시작
         maxLength(1);
 
         System.out.println(result);
@@ -47,10 +49,16 @@ public class Main {
 
         visited[node] = true;
 
+        // node에 연결되어 있는 다른 노드 정보
         ArrayList<int[]> edge = edges.get(node);
+        
+        // node에 연결되어 있는 다른 노드 개수
         int size = edge.size();
+        
+        // node에 연결되어 있는 다른 노드들의 리프노드까지의 가장 긴 거리
         long[] weight = new long[size + 1];
 
+        // 연결된 노드들로 이동
         int[] next;
         for (int i = 0; i < size; i++) {
             next = edge.get(i);
@@ -60,10 +68,13 @@ public class Main {
             }
         }
 
+        // 정렬
         Arrays.sort(weight);
 
+        // node에서 갈 수 있는 리프노드까지의 길이들 중, 가장 긴 길이 두 개 합을 최대값과 비교
         result = Math.max(result, weight[size] + weight[size - 1]);
 
+        // node에서 갈 수 있는 리프노드까지의 길이들 중, 가장 긴 길이 리턴
         return weight[size];
     }
 }
