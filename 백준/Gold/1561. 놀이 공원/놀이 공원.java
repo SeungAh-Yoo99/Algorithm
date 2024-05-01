@@ -31,12 +31,13 @@ public class Main {
                 // m 시간 동안 태울 수 있는 아이 수
                 sum += m / arr[i] + 1;
 
+                // 마지막 아이가 탄 시간
                 if(arr[i] * (m / arr[i]) > l) l = arr[i] * (m / arr[i]);
             }
 
             if(sum >= N) {
                 last = l;
-                total = sum;
+                total = sum; // 마지막 아이가 탄 시간까지 몇 명이나 태울 수 있는지 저장
                 e = m - 1;
             }
             else {
@@ -45,9 +46,9 @@ public class Main {
         }
 
         // 마지막 아이가 탄 놀이기구 번호 구하기
-        long sub = total - N;
+        long sub = total - N; // 마지막 시간까지 태울 수 있는 총 인원 수와 태우고 싶은 아이 수의 차
         int result = 0;
-        for (int i = M - 1; i >= 0; i--) {
+        for (int i = M - 1; i >= 0; i--) { // 마지막 시간에 실제로 아이를 태우지 않은 놀이기구는 제외시키고, 실제로 아이를 태운 놀이기구 구하기
             if(last % arr[i] == 0) {
                 if(sub == 0) {
                     result = i + 1;
