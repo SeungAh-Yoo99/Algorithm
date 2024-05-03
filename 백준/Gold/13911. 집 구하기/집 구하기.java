@@ -39,10 +39,6 @@ public class Main {
             edges.get(v).add(new int[] {u, w});
         }
 
-        // 집인 정점
-        boolean[] house = new boolean[V + 3];
-        Arrays.fill(house, true);
-
         st = new StringTokenizer(br.readLine());
         int M = Integer.parseInt(st.nextToken());
         int x = Integer.parseInt(st.nextToken());
@@ -51,7 +47,6 @@ public class Main {
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < M; i++) {
             tmp = Integer.parseInt(st.nextToken());
-            house[tmp] = false;
             edges.get(V + 1).add(new int[] {tmp, 0});
         }
 
@@ -62,7 +57,6 @@ public class Main {
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < S; i++) {
             tmp = Integer.parseInt(st.nextToken());
-            house[tmp] = false;
             edges.get(V + 2).add(new int[] {tmp, 0});
         }
 
