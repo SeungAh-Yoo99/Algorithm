@@ -33,7 +33,7 @@ public class Main {
            count = 0; left = 0; tmp = 1;
            while(left < n + 1) {
 
-               if(tmp < n + 2 && len[tmp] - len[left] < mid) tmp++;
+               if(tmp < n + 1 && len[tmp] - len[left] < mid) tmp++;
                else {
                    count += tmp - left - 1;
                    left = tmp++;
