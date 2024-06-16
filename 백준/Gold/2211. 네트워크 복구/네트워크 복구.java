@@ -7,7 +7,7 @@ public class Main {
     // 다익스트라에 사용하기 위한 경로 정보를 담은 클래스
     static class Route implements Comparable{
 
-        int node; // 마지막 도착 노드
+        int node; // 이 경로의 마지막 도착 노드
         int weight; // node까지 오기 위해 걸린 시간
         ArrayList<Integer> way; // node까지 오며 지나간 회선 정보
 
@@ -64,7 +64,7 @@ public class Main {
 
         // 해당 회선을 사용했는지 여부
         boolean[] use = new boolean[M];
-        int count = 0;
+        int count = 0; // 사용한 회선 개수
 
         // 다익스트라
         PriorityQueue<Route> pq = new PriorityQueue<>();
@@ -89,7 +89,7 @@ public class Main {
                     }
                 }
             }
-            else continue;
+            else continue; // 이미 now까지 오는 다른 최단 거리를 찾았다면 다른 경로 확인하러
 
             edge = edges.get(now.node);
             for (int i = 0; i < edge.size(); i++) {
