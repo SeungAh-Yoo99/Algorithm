@@ -45,14 +45,17 @@ class Solution {
         for(int k : hm.keySet()) {
             
             c = hm.get(k);
-            
+
+            // 에어컨을 끄는 경우
             if(k < temp) putMap(n, now, k + 1, c);
             else if(k == temp) putMap(n, now, k, c);
             else putMap(n, now, k - 1, c);
-            
+
+            // 희망 온도를 변경하는 경우
             putMap(n, now, k - 1, c + a);
             putMap(n, now, k + 1, c + a);
-            
+
+            // 희망 온도를 유지하는 경우
             putMap(n, now, k, c + b);
         }
         
