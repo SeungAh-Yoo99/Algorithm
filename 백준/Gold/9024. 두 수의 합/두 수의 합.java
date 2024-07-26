@@ -74,6 +74,7 @@ public class Main {
             }
         }
 
+        // 찾은 수
         int sub = Math.abs(K - (arr[index] + arr[get]));
         if(ret[0] > sub) {
             ret[0] = sub;
@@ -83,6 +84,7 @@ public class Main {
             ret[1]++;
         }
 
+        // 찾은 수보다 더 큰 수 중 가장 작은 수도 검사
         if(get != n - 1) {
             sub = Math.abs(K - (arr[index] + arr[get + 1]));
             if(ret[0] > sub) {
