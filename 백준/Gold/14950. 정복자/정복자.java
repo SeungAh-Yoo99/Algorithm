@@ -1,10 +1,11 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class Main {
+
+    static int[] parent;
 
     public static void main(String[] args) throws Exception{
 
@@ -16,10 +17,8 @@ public class Main {
         int M = Integer.parseInt(st.nextToken());
         int t = Integer.parseInt(st.nextToken());
 
-        ArrayList<ArrayList<int[]>> edges = new ArrayList<>();
-        for (int i = 0; i <= N; i++) {
-            edges.add(new ArrayList<>());
-        }
+        // 크루스칼 알고리즘
+        PriorityQueue<int[]> pq = new PriorityQueue<>((o1, o2) -> o1[2] - o2[2]);
 
         int A, B, C;
         for (int i = 0; i < M; i++) {
@@ -27,46 +26,46 @@ public class Main {
             A = Integer.parseInt(st.nextToken());
             B = Integer.parseInt(st.nextToken());
             C = Integer.parseInt(st.nextToken());
-            edges.get(A).add(new int[] {B, C});
-            edges.get(B).add(new int[] {A, C});
+            pq.add(new int[] {A, B, C});
         }
 
-        // 다익스트라
-        PriorityQueue<int[]> pq = new PriorityQueue<>((o1, o2) -> o1[1] - o2[1]);
-        pq.add(new int[] {1, 0});
+        parent = new int[N + 1];
+        for (int i = 1; i <= N; i++) {
+            parent[i] = i;
+        }
 
-        // 현재 몇 개의 도시를 정복했는지
-        int count = -1;
-
-        // 총 비용
-        long result = 0;
-
-        // 이미 정복한 도시
-        boolean[] visited = new boolean[N + 1];
-
-        int[] now, next;
-        ArrayList<int[]> edge;
+        int[] now;
+        int result = 0;
+        int count = 0;
         while(!pq.isEmpty()) {
             now = pq.poll();
 
-            // 이미 더 작은 비용으로 정복한 도시라면
-            if(visited[now[0]]) continue;
-
-            // 아니라면 이번에 정복
-            result += now[1] + t * (count > -1 ? count : 0);
-            count++;
-            visited[now[0]] = true;
-
-            edge = edges.get(now[0]);
-            for (int i = 0; i < edge.size(); i++) {
-                next = edge.get(i);
-
-                if(!visited[next[0]]) {
-                    pq.add(next);
-                }
+            if(union(now[0], now[1])) { // 아직 정복하지 않은 도시를 발견했을 경우
+                result += now[2] + (t * count++); // 비용 더하기
             }
         }
 
         System.out.println(result);
+    }
+
+    private static int find(int a) {
+
+        if(parent[a] == a) return a;
+
+        return parent[a] = find(parent[a]);
+    }
+
+    private static boolean union(int a, int b) {
+
+        a = find(a);
+        b = find(b);
+
+        // 이미 연결되어 있다면 false
+        if(a == b) return false;
+
+        // 아직 연결 전이라면 true;
+        if(a < b) parent[b] = a;
+        else parent[a] = b;
+        return true;
     }
 }
