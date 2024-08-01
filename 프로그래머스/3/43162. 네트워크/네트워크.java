@@ -16,12 +16,8 @@ class Solution {
         
         // 네트워크 개수 세기
         int answer = 0;
-        boolean[] visited = new boolean[n];
         for(int i = 0; i < n; i++) {
-            if(parent[i] == i && !visited[i]) {
-                answer++;
-                visited[i] = true;
-            }
+            if(parent[i] == i) answer++;
         }
         
         return answer;
