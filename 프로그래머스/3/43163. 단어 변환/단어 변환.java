@@ -2,9 +2,10 @@ import java.util.*;
 
 class Solution {
     
+    // 변환을 몇 번 거쳐 만든 단어인지 정보를 저장하고 있는 Node 클래스
     static class Node {
-        int count;
-        char[] string;
+        int count; // 변환 회수
+        char[] string; // 단어
         
         Node(int count, char[] string) {
             this.count = count;
@@ -16,13 +17,13 @@ class Solution {
         
         int answer = 0;
         
-        // target이 words 안에 있는지 확인
+        // target을 char[]로 변환
         char[] targetArr = target.toCharArray();
         
         // words들을 char[]로 변환
         char[][] wordsArr = new char[words.length][];
         boolean flag;
-        int targetIndex = -1;
+        int targetIndex = -1; // target의 인덱스
         for(int i = 0; i < words.length; i++) {
             wordsArr[i] = words[i].toCharArray();
             
