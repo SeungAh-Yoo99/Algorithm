@@ -13,20 +13,20 @@ class Solution {
         int count = 0;
         
         int min;
-        while(!pq.isEmpty() && k >= (long)pq.size()) {
+        while(!pq.isEmpty() && k >= pq.size()) {
             // 현재 가장 적게 남은 음식
             min = pq.peek() - count;
             
             // 가장 적게 남은 음식이 끝날 때까지 회전
             if(k >= (long)min * pq.size()) {
                 count += min;
-                k = k - (long)min * pq.size();
+                k -= (long)min * pq.size();
             }
             // 가장 적게 남은 음식이 끝날 때까지 회전하진 못한다면
             else {
                 // 돌 수 있는 만큼은 돌기
-                count += (int)(k / (long)pq.size());
-                k = (long)(k % (long)pq.size());
+                count += k / pq.size();
+                k %= (long)pq.size();
             }
             
             // 끝난 음식 제거
