@@ -3,40 +3,27 @@ import java.util.*;
 class Solution {
     public int solution(int[][] routes) {
         
-        // 들어온 순으로 정렬
-        Arrays.sort(routes, (o1, o2) -> o1[0] - o2[0]);
+        // 끝나는 순으로 정렬
+        Arrays.sort(routes, (o1, o2) -> o1[1] - o2[1]);
         
         // 필요한 CCTV 개수
         int answer = 0;
         
-        // 들어온 차가 나갈 순서
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
-        int now = 0; // 이번에 들어올 차
-        while(now < routes.length) {
+        // 하나의 cctv 설치 이후 처음 들어온 차량의 나가는 시간
+        int out = -30_001;
+        for(int[] car : routes) {
             
-            // 아직 들어온 차가 없다면
-            if(pq.isEmpty()) {
-                pq.add(routes[now][1]);
-                now++;
-                continue;
-            }
+            // out에 cctv를 설치해줄 거임
+            // out보다 먼저 들어온 차량은 out에 cctv를 설치함으로써 경로에 cctv가 하나 이상 생기게 됨
+            // out보다 늦게 들어온 차량은 또 다른 cctv를 설치해주어야 함
             
-            // 이번에 들어올 차보다 먼저 나가는 차가 있다면
-            if(routes[now][0] > pq.peek()) {
-                // routes[now][0]에 cctv를 설치함으로써 현재 도로에 있는 모든 차들의 경로에 cctv가 있게 함
-                answer++;
-                pq.clear();
-            }
-            // 가장 먼저 나가는 차보다 다음으로 들어오는 차가 더 먼저라면
-            else {
-                pq.add(routes[now][1]);
-                now++;
+            // out보다 늦게 들어온 차량 발견 시,
+            // out에 cctv 설치해줌
+            if(out < car[0]) {
+                answer++; // cctv 설치
+                out = car[1]; // 새로운 cctv 설치 장소 저장
             }
         }
-        
-        // 아직 도로에 남아있는 차량이 있다면 cctv 한 대 더 설치
-        if(!pq.isEmpty()) answer++;
-        
         
         return answer;
     }
