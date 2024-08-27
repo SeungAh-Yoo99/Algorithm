@@ -46,7 +46,7 @@ public class Solution {
             // 기준 높이에 해당하는 칸 개수
             now = blockInfo.get(i)[1];
             
-            // 기준 높이 변화로 더 쌓아야 하는 블럭 개수 수정
+            // 기준 높이 변화로 더 쌓거나 제거해야 하는 블럭 개수 수정
             up += (long)(height - preHeight) * under;
             down -= (long)(height - preHeight) * top;
             
