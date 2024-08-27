@@ -17,7 +17,7 @@ public class Solution {
         // 1차원 배열로 만든 land 정렬
         Arrays.sort(landBy1th);
         
-        // 같은 층을 칸 개수 구하기
+        // 같은 층을 가진 칸 개수 구하기
         ArrayList<int[]> blockInfo = new ArrayList<>();
         for(int i = 0; i < landBy1th.length; i++) {
             if(blockInfo.size() > 0
