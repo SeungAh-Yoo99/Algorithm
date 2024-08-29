@@ -26,7 +26,7 @@ class Solution {
             
             // 다음에 이동할 디딤돌 고르기
             next = new int[] {0, -2};
-            while(next[1] < point) next = pq.poll();
+            while(next[1] < point) next = pq.poll(); // 이미 뛰어넘은 곳은 넘어감
             
             // 다음으로 이동할 디딤돌 위치
             point = next[1];
