@@ -33,7 +33,7 @@ public class Main {
         while(count++ < N) {
             now = pq.poll();
 
-            // now[2]번째 열의 now[1] - 1번째 원소 추가
+            // now[2]번째 행의 now[1] - 1번째 원소 추가
             if(now[1] > 0) pq.add(new int[] {table[now[1] - 1][now[2]], now[1] - 1, now[2]});
         }
 
