@@ -236,6 +236,7 @@
 |1924. 2007년|[링크](./%EB%B0%B1%EC%A4%80/Bronze/1924.%E2%80%852007%EB%85%84)|
 |1934. 최소공배수|[링크](./%EB%B0%B1%EC%A4%80/Bronze/1934.%E2%80%85%EC%B5%9C%EC%86%8C%EA%B3%B5%EB%B0%B0%EC%88%98)|
 |20254. Site Score|[링크](./%EB%B0%B1%EC%A4%80/Bronze/20254.%E2%80%85Site%E2%80%85Score)|
+|2037. 문자메시지|[링크](./%EB%B0%B1%EC%A4%80/Bronze/2037.%E2%80%85%EB%AC%B8%EC%9E%90%EB%A9%94%EC%8B%9C%EC%A7%80)|
 |20492. 세금|[링크](./%EB%B0%B1%EC%A4%80/Bronze/20492.%E2%80%85%EC%84%B8%EA%B8%88)|
 |21300. Bottle Return|[링크](./%EB%B0%B1%EC%A4%80/Bronze/21300.%E2%80%85Bottle%E2%80%85Return)|
 |22193. Multiply|[링크](./%EB%B0%B1%EC%A4%80/Bronze/22193.%E2%80%85Multiply)|
