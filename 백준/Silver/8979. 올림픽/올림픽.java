@@ -31,6 +31,11 @@ public class Main {
                     : o2[1] - o1[1]); // 금메달 많은 사람이 우선 순위가 더 높음
 
         // 순위 구하기
+        if(count[0][0] == K) { // K 국가가 1위인 경우
+            System.out.println(1);
+            return;
+        }
+        
         int result = 1;
         for (int i = 1; i < N; i++) {
             if(count[i - 1][1] != count[i][1]
@@ -41,7 +46,6 @@ public class Main {
             // K번째 국가를 찾았다면 탈출
             if(count[i][0] == K) break;
         }
-
         System.out.println(result);
     }
 }
