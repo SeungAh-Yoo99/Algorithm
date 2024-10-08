@@ -33,7 +33,7 @@ public class Main {
         int result = -1; // K를 뺏을 때의 최대공약수
         int resultArr = 0;
 
-        int temp, tGcd;
+        int temp;
         for (int i = 0; i < N; i++) {
             // i를 뺏을 때의 최대공약수
             if(i == 0) temp = rgcd[1];
