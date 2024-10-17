@@ -56,7 +56,10 @@ public class Main {
                 }
 
                 // m개의 게임을 구성할 수 있는 카드 팩 하나 발견
-                if(i - start + 1 == m) count++;
+                if(i - start + 1 == m) {
+                    count++;
+                    start = i + 1;
+                }
             }
 
             // m개의 게임을 넣고 M개의 카드 팩을 구성할 수 있는 경우
