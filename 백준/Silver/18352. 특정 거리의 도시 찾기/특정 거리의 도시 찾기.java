@@ -1,72 +1,73 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
 
-	public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception{
 
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st;
-		StringBuilder sb = new StringBuilder();
-		
-		// N, M, K, X 입력
-		st = new StringTokenizer(br.readLine());
-		int N = Integer.parseInt(st.nextToken());
-		int M = Integer.parseInt(st.nextToken());
-		int K = Integer.parseInt(st.nextToken());
-		int X = Integer.parseInt(st.nextToken());
-		
-		// 도로 정보를 넣을 ArrayList
-		ArrayList<LinkedList<Integer>> list = new ArrayList<>();
-		// 최단 거리 담을 배열
-		int[] minD = new int[N + 1];
-		for (int i = 0; i < N + 1; i++) {
-			list.add(new LinkedList<>());
-			minD[i] = -1; // 최단 거리를 -1로 초기화
-		}
-		
-		// 도로 정보 입력
-		for (int i = 0; i < M; i++) {
-			st = new StringTokenizer(br.readLine());
-			int s = Integer.parseInt(st.nextToken());
-			int e = Integer.parseInt(st.nextToken());
-			list.get(s).add(e);
-		}
-		
-		// X에서 출발할 수 있는 도시의 정보를 q에 담기
-		LinkedList<Integer> start = list.get(X);
-		
-		int count = 0; // X에서 count만큼 이동
-		minD[X] = 0; // 시작 도시의 최단 거리는 0
-		while(count <= K) {
-			count++;
-			
-			LinkedList<Integer> next = new LinkedList<>();
-			for (int i = 0; i < start.size(); i++) {
-				if(minD[start.get(i)] == -1) { // 처음 도착한 도시라면
-					minD[start.get(i)] = count; // 최단 거리 저장
-					next.addAll(list.get(start.get(i)));
-				}
-			}
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
 
-			start = next;
-		}
-		
-		// 최소 거리가 K이면 sb에 담아줌
-		int cnt = 0;
-		for (int i = 1; i <= N; i++) {
-			if(minD[i] == K) {
-				sb.append(i + "\n");
-				cnt++;
-			}
-		}
-		
-		// 출력
-		if(cnt == 0) System.out.println("-1");
-		else System.out.println(sb);
-	}
+        st = new StringTokenizer(br.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+        int K = Integer.parseInt(st.nextToken());
+        int X = Integer.parseInt(st.nextToken());
 
+        ArrayList<ArrayList<Integer>> edges = new ArrayList<>();
+        for (int i = 0; i <= N; i++) {
+            edges.add(new ArrayList<>());
+        }
+
+        int A, B;
+        for (int i = 0; i < M; i++) {
+            st = new StringTokenizer(br.readLine());
+            A = Integer.parseInt(st.nextToken());
+            B = Integer.parseInt(st.nextToken());
+
+            edges.get(A).add(B);
+        }
+
+        ArrayList<Integer> resultList = new ArrayList<>();
+
+        // 다익스트라
+        Queue<int[]> q = new ArrayDeque<>();
+        q.offer(new int[] {X, 0});
+
+        // 이미 방문한 적 있는 노드
+        boolean[] visited = new boolean[N + 1];
+        visited[X] = true;
+
+        int[] now;
+        ArrayList<Integer> edge;
+        while(!q.isEmpty()) {
+            now = q.poll();
+
+            edge = edges.get(now[0]);
+            for(int next : edge) {
+                if(!visited[next]) {
+                    visited[next] = true;
+                    if(now[1] + 1 == K) {
+                        resultList.add(next);
+                    }
+                    else {
+                        q.offer(new int[] {next, now[1] + 1});
+                    }
+                }
+            }
+        }
+
+        // 최단 거리가 K인 도시가 없다면
+        if(resultList.isEmpty()) {
+            System.out.println(-1);
+            return;
+        }
+
+        // 정렬
+        Collections.sort(resultList);
+        StringBuilder result = new StringBuilder();
+        for(int num : resultList) result.append(num).append("\n");
+        System.out.print(result);
+    }
 }
