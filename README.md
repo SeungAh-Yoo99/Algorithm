@@ -242,6 +242,7 @@
 |2037. 문자메시지|[링크](./%EB%B0%B1%EC%A4%80/Bronze/2037.%E2%80%85%EB%AC%B8%EC%9E%90%EB%A9%94%EC%8B%9C%EC%A7%80)|
 |20492. 세금|[링크](./%EB%B0%B1%EC%A4%80/Bronze/20492.%E2%80%85%EC%84%B8%EA%B8%88)|
 |21300. Bottle Return|[링크](./%EB%B0%B1%EC%A4%80/Bronze/21300.%E2%80%85Bottle%E2%80%85Return)|
+|2163. 초콜릿 자르기|[링크](./%EB%B0%B1%EC%A4%80/Bronze/2163.%E2%80%85%EC%B4%88%EC%BD%9C%EB%A6%BF%E2%80%85%EC%9E%90%EB%A5%B4%EA%B8%B0)|
 |22193. Multiply|[링크](./%EB%B0%B1%EC%A4%80/Bronze/22193.%E2%80%85Multiply)|
 |2231. 분해합|[링크](./%EB%B0%B1%EC%A4%80/Bronze/2231.%E2%80%85%EB%B6%84%ED%95%B4%ED%95%A9)|
 |2292. 벌집|[링크](./%EB%B0%B1%EC%A4%80/Bronze/2292.%E2%80%85%EB%B2%8C%EC%A7%91)|
