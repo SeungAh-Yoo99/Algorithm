@@ -1,18 +1,28 @@
-N, M = map(int, input().split())
-tree = list(map(int, input().split()))
-start, end = 1, max(tree) #이분탐색 검색 범위 설정
+import sys
+input = sys.stdin.readline
 
-while start <= end: #적절한 벌목 높이를 찾는 알고리즘
-    mid = (start+end) // 2
-    
-    log = 0 #벌목된 나무 총합
-    for i in tree:
-        if i >= mid:
-            log += i - mid
-    
-    #벌목 높이를 이분탐색
-    if log >= M:
-        start = mid + 1
-    else:
-        end = mid - 1
-print(end)
+# 나무의 수: n, 필요한 나무: M(목표), 절단기 높이: H(정답), 최소 M미터의 나무를 집에 가져가기 위한 절단기 높이 H는?
+n, m = map(int, input().strip().split())
+trees = list(map(int, input().strip().split()))
+
+start = 0
+end = max(trees)
+result = 0
+
+while(start <= end):
+	total = 0
+	mid = (start + end) // 2
+	for i in trees:
+		# 잘랐을 때 나무의 양 계산
+		if i > mid:
+			total += i-mid
+
+     # 나무의 양이 m에 도달하지 못한다면
+	if total < m:
+		# end 값을 왼쪽으로 보낸다
+		end = mid -1
+	# 나무의 양이 m을 초과한다면
+	else:
+		result = mid # while문 반복 -> 최소의 result를 얻을 수 있게 됨
+		start = mid +1
+print(result)
