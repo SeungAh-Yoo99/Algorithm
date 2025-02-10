@@ -17,7 +17,7 @@ class Solution {
                     isNotPN[j] = true; // 소인수 i의 배수들은 소인수가 아님
                     j += i;
                 }
-                // j가 n의 소인수인 경우, 리스트에 담아줌
+                // i가 n의 소인수인 경우, 리스트에 담아줌
                 if(j - i == n) list.add(i);
             }
         }
