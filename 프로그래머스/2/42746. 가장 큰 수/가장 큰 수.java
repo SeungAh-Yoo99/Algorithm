@@ -14,7 +14,8 @@ class Solution {
         // 배열에 0만 있었다면 바로 "0" 리턴
         if(flag) return "0";
         
-        // 앞자리 숫자가 큰 순으로 정렬
+        // 두 수를 합쳤을 때,
+        // 앞에 놓였을 때 더 큰 수가 되는 수가 우선순위가 더 높음
         Collections.sort(list, (o1, o2) -> {
             
             int o1o2 = Integer.parseInt(o1 + o2);
