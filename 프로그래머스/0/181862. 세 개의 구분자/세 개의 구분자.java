@@ -5,14 +5,11 @@ class Solution {
         
         StringTokenizer st = new StringTokenizer(myStr, "abc");
         
-        List<String> list = new ArrayList<>();
-        while(st.hasMoreTokens()) list.add(st.nextToken());
+        if(st.countTokens() == 0) return new String[] {"EMPTY"};
         
-        String[] answer;
-        if(list.size() > 0) answer = list.toArray(new String[list.size()]);
-        else answer = new String[] {"EMPTY"};
-        
-        
+        String[] answer = new String[st.countTokens()];
+        for(int i = 0; i < answer.length; i++)
+            answer[i] = st.nextToken();
         return answer;
     }
 }
