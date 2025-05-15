@@ -3,49 +3,61 @@ import java.io.InputStreamReader;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception{
+    /*
+    1번 패턴의 시작 100, 끝 1
+    2번 패턴 01
+     */
+
+    public static void main(String[] args) throws Exception {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        char[] string = br.readLine().toCharArray();
+        String input = br.readLine();
 
         String result = "SUBMARINE";
 
-        int idx = 0; // 확인 중인 문자 순서
-        while(idx < string.length) {
+        int index = 0; // 현재 확인 중인 곳
 
-            // 1. 시작이 "100"인 경우
-            if(string[idx] == '1' && string[idx + 1] == '0' && string[idx + 2] == '0') {
-                idx += 3;
+        while(index < input.length()) {
 
-                // '1'이 나올 때까지 뒤로
-                while(idx < string.length && string[idx] == '0') idx++;
+            // 현재 위치가 1번 패턴의 시작인 경우
+            if(index < input.length() - 2
+                    && input.substring(index, index + 3).equals("100")) {
 
-                // '1'을 찾지 못했다면 잡음
-                if(idx == string.length) {
+                index += 3;
+
+                // 0 반복의 끝을 찾기
+                while(index < input.length() && input.charAt(index) == '0')
+                    index++;
+                // 1번 패턴의 끝을 찾지 못한 경우
+                if(index == input.length()) {
                     result = "NOISE";
                     break;
                 }
 
-                // '1'이 끝날 때까지 뒤로
-                while(idx < string.length && string[idx] == '1') idx++;
+                index++;
+
+                // 1 반복의 끝을 찾기
+                while(index < input.length() && input.charAt(index) == '1')
+                    index++;
+
+                // 만약 현재 위치가 또 다른 1번 패턴의 위치인 경우
+                if(index < input.length() - 2 && input.substring(index - 2, index + 2).equals("1100")) {
+                    index--;
+                }
             }
-            // 2. 시작이 "01"인 경우
-            else if (string[idx] == '0' && string[idx + 1] == '1') {
-                 idx += 2;
+            // 현재 위치가 2번 패턴의 시작인 경우
+            else if(index < input.length() - 1
+                    && input.substring(index, index + 2).equals("01")) {
+                index += 2;
             }
-            // 3. 1번 패턴 이후 다시 1번 패턴이 나오는 경우
-            else if (idx > 2 && string[idx - 2] == '1' && string[idx - 1] == '1' && string[idx] == '0') {
-                idx--;
-            }
-            // 4. 위 경우에 해당하지 않으면 잡음
+            // 현재 위치에선 1, 2번 패턴을 모두 시작할 수 없는 경우
             else {
                 result = "NOISE";
                 break;
             }
         }
 
-        // 출력
         System.out.println(result);
     }
 }
