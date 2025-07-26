@@ -34,7 +34,7 @@ public class Main {
         }
 
         // DP -> 같은 경우를 다시 계산하지 않기 위해 최소값 저장
-        dp = new int[N + 6][N + 10];
+        dp = new int[N + 6][N + 2];
         for (int i = 1; i < N + 6; i++) {
            Arrays.fill(dp[i], MAX);
         }
