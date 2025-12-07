@@ -1,4 +1,4 @@
-SELECT TRUNCATE(price, -4) AS price_group, COUNT(product_id) as products
-FROM product
-GROUP BY TRUNCATE(price, -4)
-ORDER BY price_group
+select floor(price / 10000) * 10000 as price_group, count(*) as products
+from product
+group by floor(price / 10000) * 10000
+order by price_group;
