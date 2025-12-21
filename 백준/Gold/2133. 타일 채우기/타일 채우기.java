@@ -1,23 +1,25 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Main {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+    public static void main(String[] args) throws Exception{
 
-		Scanner scan=new Scanner(System.in);
-		int dp[]=new int[31];
-		
-		dp[0]=1;
-		dp[2]=3;
-		int mul=0;
-		for (int i=4;i<=30;i+=2) {
-			dp[i]+=dp[i-2]*dp[2];
-			mul+=dp[i-4]*2;
-			dp[i]+=mul;
-		}
-		int n=scan.nextInt();
-		System.out.println(dp[n]);
-	}
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+        int N = Integer.parseInt(br.readLine());
+
+        int[] dp = new int[31];
+        dp[2] = 3;
+
+        for (int i = 4; i <= 30; i += 2) {
+            dp[i] += dp[i - 2] * 3;
+            for (int j = 4; j <= i; j += 2) {
+                dp[i] += dp[i - j] * 2;
+            }
+            dp[i] += 2;
+        }
+
+        System.out.println(dp[N]);
+    }
 }
