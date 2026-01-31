@@ -3,23 +3,29 @@ import java.util.*;
 class Solution {
     public int solution(int k, int[] tangerine) {
         
-        // 인덱스에 해당하는 사이즈인 귤의 개수
-        int[] size = new int[10_000_001];
+        // 사이즈별 귤의 갯수 세기
+        Integer[] count = new Integer[10_000_001];
+        Arrays.fill(count, 0);
         
-        for(int s : tangerine) {
-            size[s]++;
+        for(int i = 0; i < tangerine.length; i++) {
+            count[tangerine[i]]++;
         }
         
-        // 개수를 기준으로 정렬
-        Arrays.sort(size);
+        // 사이즈별 갯수 순으로 정렬
+        Arrays.sort(count, (o1, o2) -> o2 - o1);
         
+        // 종류
         int answer = 0;
-        for(int i = 10_000_000; i > 0; i--) {
-            // 귤을 다 담았다면 반복문 탈출
-            if(k <= 0) break;
-            
-            k -= size[i];
-            answer++;
+        
+        // 고른 갯수
+        int pick = 0;
+        
+        for(int i = 0; i < 10_000_001; i++) {
+            pick += count[i];
+            if(pick >= k) {
+                answer = i + 1;
+                break;
+            }
         }
         
         return answer;
