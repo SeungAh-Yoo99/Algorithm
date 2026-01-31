@@ -4,48 +4,33 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-    static int MIN = -100_000_001;
-
     public static void main(String[] args) throws Exception{
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
 
         int n = Integer.parseInt(br.readLine());
 
         int[] arr = new int[n];
-        st = new StringTokenizer(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
-        // 붙어있는 양수들을 모두 합치기
-        int answer = MIN;
+        // dp[i][0] := i를 포함하지 않음
+        // dp[i][1] := i를 포함한 수열 중 아직 제거한 수 없음
+        // dp[i][2] := i를 포함한 수열 중 제거한 수 있음
+        int[][] dp = new int[n][3];
+        dp[0][0] = 0;
+        dp[0][1] = arr[0];
+        dp[0][2] = arr[0];
 
-        // tmp[0] := 아직 한 번도 제거하지 않은 부분 합 중 최댓값
-        // tmp[1] := 한 번 제거한 적 잇는 부분 합 중 최댓값
-        int[] tmp = new int[2];
-        tmp[0] = tmp[1] = MIN;
+        int answer = Math.max(-100_000_001, arr[0]);
 
-        int o, x;
-        for (int i = 0; i < n; i++) {
-            o = x = MIN;
-
-            // tmp[0]에 대해 현재 값 더하기
-            o = Math.max(o, tmp[0] + arr[i]);
-
-            // tmp[0]에 대해 현재 값 빼기
-            x = Math.max(x, tmp[0]);
-
-            // 앞 값들을 더하지 않고 현재 값 새로 시작하기
-            o = Math.max(o, arr[i]);
-
-            // tmp[1]에 대해 현재 값 더하기
-            x = Math.max(x, tmp[1] + arr[i]);
-
-            answer = Math.max(answer, Math.max(o, x));
-            tmp[0] = o;
-            tmp[1] = x;
+        for (int i = 1; i < n; i++) {
+            dp[i][0] = dp[i - 1][1];
+            dp[i][1] = Math.max(dp[i - 1][1], 0) + arr[i];
+            dp[i][2] = Math.max(dp[i - 1][0], dp[i - 1][2]) + arr[i];
+            answer = Math.max(Math.max(dp[i][0], dp[i][1]), Math.max(dp[i][2], answer));
         }
 
         System.out.println(answer);
