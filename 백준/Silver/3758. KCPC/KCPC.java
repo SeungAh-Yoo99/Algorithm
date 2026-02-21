@@ -1,20 +1,19 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
-
     public static void main(String[] args) throws Exception{
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
-        StringBuilder answer = new StringBuilder();
+        StringBuilder result = new StringBuilder();
 
         int T = Integer.parseInt(br.readLine());
 
-        int n, k, t, m, i, j, s;
-        int[][] teamInfo, score;
+        int n, k, t, m, i, j, s, grade;
+        int[][] scores;
+        int[] counts, lastTimes;
         for (int tc = 0; tc < T; tc++) {
             st = new StringTokenizer(br.readLine());
             n = Integer.parseInt(st.nextToken());
@@ -22,51 +21,41 @@ public class Main {
             t = Integer.parseInt(st.nextToken());
             m = Integer.parseInt(st.nextToken());
 
-            // 팀 정보를 담을 배열
-            // teamInfo[i][0] := i번 팀의 팀 번호
-            // teamInfo[i][1] := i번 팀의 최종 점수
-            // teamInfo[i][2] := i번 팀의 제출 횟수
-            // teamInfo[i][3] := i번 팀의 마지막 제출 시간
-            teamInfo = new int[n + 1][4];
-            for (int l = 1; l <= n; l++) teamInfo[l][0] = l;
+            scores = new int[n + 1][k + 1];
+            counts = new int[n + 1];
+            lastTimes = new int[n + 1];
 
-            // 팀별 문제 점수
-            score = new int[k + 1][n + 1];
-
-            // 로그 정보 입력
-            for (int l = 0; l < m; l++) {
+            for (int time = 0; time < m; time++) {
                 st = new StringTokenizer(br.readLine());
                 i = Integer.parseInt(st.nextToken());
                 j = Integer.parseInt(st.nextToken());
                 s = Integer.parseInt(st.nextToken());
 
-                // 제출 횟수와 마지막 제출 시간 갱신
-                teamInfo[i][2]++;
-                teamInfo[i][3] = l;
+                if(scores[i][j] < s) {
+                    scores[i][0] += s - scores[i][j];
+                    scores[i][j] = s;
+                }
+                counts[i]++;
+                lastTimes[i] = time;
+            }
 
-                if(score[j][i] < s) { // 기존의 점수보다 더 높은 점수를 얻었을 경우
-                    teamInfo[i][1] += s - score[j][i]; // 기존 점수의 차이만큼 최종 점수에 더해줌
-                    score[j][i] = s; // 가장 높은 점수 갱신
+            // 우리 팀보다 순위가 높은 팀 갯수 세기
+            grade = 1;
+            for (int a = 1; a <= n; a++) {
+                if(a == t) continue;
+
+                if(scores[a][0] > scores[t][0]) grade++;
+                else if(scores[a][0] == scores[t][0]) {
+                    if(counts[a] < counts[t]) grade++;
+                    else if(counts[a] == counts[t]) {
+                        if(lastTimes[a] < lastTimes[t]) grade++;
+                    }
                 }
             }
 
-            // 정렬
-            Arrays.sort(teamInfo, (o1, o2)
-                    -> o1[1] == o2[1]
-                    ? o1[2] == o2[2]
-                    ? o1[3] - o2[3]
-                    : o1[2] - o2[2]
-                    : o2[1] - o1[1]);
-
-            // 우리 팀 순위 구하기
-            for (int l = 0; l < n; l++) {
-                if(teamInfo[l][0] == t) {
-                    answer.append((l + 1) + "\n");
-                    break;
-                }
-            }
+            result.append(grade).append("\n");
         }
 
-        System.out.print(answer);
+        System.out.print(result);
     }
 }
